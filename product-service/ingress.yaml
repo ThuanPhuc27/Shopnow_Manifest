@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: shopnow-product-service-ingress
+  namespace: shopnow
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - product-service.lptdevops.website
+    secretName: product-service-tls  
+  rules:
+    - host: product-service.lptdevops.website
+      http:
+        paths:
+          - backend:
+              service:
+                name: shopnow-product-service-service
+                port:
+                  number: 5861
+            path: /
+            pathType: Prefix

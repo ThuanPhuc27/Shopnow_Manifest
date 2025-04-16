@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: shopnow-product-service-service
+  namespace: shopnow
+spec:
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+    - name: tcp
+      port: 5861
+      protocol: TCP
+      targetPort: 5861
+  selector:
+    app: shopnow-product-service
+  sessionAffinity: None
+  type: ClusterIP

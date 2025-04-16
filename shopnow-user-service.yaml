@@ -73,14 +73,14 @@ spec:
               cpu: "250m"
           readinessProbe:
             httpGet:
-              path: /
+              path: /swagger-ui/index.html
               port: 5865
             initialDelaySeconds: 5
             periodSeconds: 10
             failureThreshold: 3
           livenessProbe:
             httpGet:
-              path: /
+              path: /swagger-ui/index.html
               port: 5865
             initialDelaySeconds: 10
             periodSeconds: 20

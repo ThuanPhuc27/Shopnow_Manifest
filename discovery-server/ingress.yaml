@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: shopnow-discovery-server-ingress
+  namespace: shopnow
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - discovery-server.lptdevops.website
+    secretName: discovery-server-tls  
+  rules:
+    - host: discovery-server.lptdevops.website
+      http:
+        paths:
+          - backend:
+              service:
+                name: shopnow-discovery-server-service
+                port:
+                  number: 8761
+            path: /
+            pathType: Prefix
