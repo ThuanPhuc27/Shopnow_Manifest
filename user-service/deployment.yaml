@@ -34,27 +34,6 @@ spec:
             - mountPath: /app/src/main/resources/application.properties
               name: shopnow-user-service-application-properties-config-volume
               subPath: application.properties
-          resources:
-            requests:
-              memory: "128Mi"
-              cpu: "100m"
-            limits:
-              memory: "256Mi"
-              cpu: "250m"
-          readinessProbe:
-            httpGet:
-              path: /actuator/health/readiness
-              port: 5865
-            initialDelaySeconds: 5
-            periodSeconds: 10
-            failureThreshold: 3
-          livenessProbe:
-            httpGet:
-              path: /actuator/health/liveness
-              port: 5865
-            initialDelaySeconds: 10
-            periodSeconds: 20
-            failureThreshold: 5
       imagePullSecrets:
       - name: dockerhub
       dnsPolicy: ClusterFirst
