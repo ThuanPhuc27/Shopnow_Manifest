@@ -9,7 +9,7 @@ This project showcases a comprehensive Kubernetes environment integrated with Ku
 ## 🚀 Technologies Used
 
 - **Kubernetes** – Container orchestration platform
-- **Rancher** – Kubernetes cluster lifecycle management
+- **Kubernetes Dashboardr** – Kubernetes cluster management
 - **ArgoCD** – GitOps continuous delivery tool
 - **Argo Rollouts** – Progressive delivery with blue/green deployments
 - **PNG Stack** – Prometheus, Node Exporter, Grafana for monitoring
@@ -21,7 +21,7 @@ This project showcases a comprehensive Kubernetes environment integrated with Ku
 - ✅ Installed and configured key Kubernetes tools:
   - **PNG Stack** for system metrics and visualization
   - **ELK Stack** for log collection and analysis
-  - **Rancher** for managing Kubernetes clusters
+  - **Kubernetes Dashboard** for managing Kubernetes clusters
   - **ArgoCD** for implementing GitOps workflows
 
 - 🔄 Implemented a GitOps workflow using ArgoCD to streamline application delivery from Git to production.
@@ -55,9 +55,11 @@ This project showcases a comprehensive Kubernetes environment integrated with Ku
 ###### 🪵 ELK Stack - Centralized Logging
 ![Kibana Logs](images/elk.png)
 
-###### 🧩 Rancher & Kubernetes Dashboard - Cluster Management
-![Rancher UI](images/rancher.png)
+###### 🧩 Kubernetes Dashboard - Cluster Management
 ![Kubernetes dashboards UI](images/dashboard.png)
+
+###### 🧩 Kong API Gateway
+![Kubernetes dashboards UI](images/kong.png)
 
 > _You can find these screenshots inside the `images/` directory of this repository._
 ---
