@@ -64,14 +64,14 @@ spec:
               cpu: "250m"
           readinessProbe:
             httpGet:
-              path:  /swagger-ui/index.html
+              path:  /actuator/health/readiness
               port: 5861
             initialDelaySeconds: 5
             periodSeconds: 10
             failureThreshold: 3
           livenessProbe:
             httpGet:
-              path:  /swagger-ui/index.html
+              path:  /actuator/health/liveness
               port: 5861
             initialDelaySeconds: 10
             periodSeconds: 20
