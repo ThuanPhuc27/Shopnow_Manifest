@@ -1,0 +1,60 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: shopnow-product-service-rollout
+  namespace: shopnow
+  labels:
+    app: shopnow-product-service
+spec:
+  replicas: 1
+  revisionHistoryLimit: 11
+  selector:
+    matchLabels:
+      app: shopnow-product-service
+  template:
+    metadata:
+      labels:
+        app: shopnow-product-service
+    spec:
+      containers:
+        - name: shopnow-product-service
+          image: thuanlp/shopnow_product-service:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5861
+              name: tcp
+              protocol: TCP
+          resources:
+            requests:
+              memory: "400Mi"
+              cpu: "500m"
+            limits:
+              memory: "500Mi"
+              cpu: "800m"
+          volumeMounts:
+            - mountPath: /app/src/main/resources/application.properties
+              name: shopnow-product-service-application-properties-config-volume
+              subPath: application.properties
+      imagePullSecrets:
+        - name: dockerhub
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      volumes:
+        - name: shopnow-product-service-application-properties-config-volume
+          configMap:
+            name: shopnow-product-service-application-properties-configmap
+            defaultMode: 420
+  strategy:
+    canary:
+      steps:
+        - setWeight: 20
+        - pause: {}
+        - setWeight: 40
+        - pause:
+            duration: 10
+        - setWeight: 60
+        - pause:
+            duration: 10
+        - setWeight: 80
+        - pause:
+            duration: 10

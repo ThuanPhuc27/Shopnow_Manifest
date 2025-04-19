@@ -1,3 +1,24 @@
+# apiVersion: autoscaling/v2
+# kind: HorizontalPodAutoscaler
+# metadata:
+#   name: shopnow-product-service-hpa
+#   namespace: shopnow
+# spec:
+#   scaleTargetRef:
+#     apiVersion: apps/v1
+#     kind: Deployment
+#     name: shopnow-product-service-deployment
+#   minReplicas: 1
+#   maxReplicas: 3
+#   metrics:
+#     - type: Resource
+#       resource:
+#         name: cpu
+#         target:
+#           type: Utilization
+#           averageUtilization: 70
+
+
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
@@ -5,9 +26,9 @@ metadata:
   namespace: shopnow
 spec:
   scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: shopnow-product-service-deployment
+    apiVersion: argoproj.io/v1alpha1
+    kind: Rollout
+    name: shopnow-product-service-rollout
   minReplicas: 1
   maxReplicas: 3
   metrics:
