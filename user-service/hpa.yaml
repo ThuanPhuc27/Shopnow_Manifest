@@ -29,7 +29,7 @@ spec:
     kind: Rollout
     name: shopnow-user-service-rollout
   minReplicas: 1
-  maxReplicas: 5
+  maxReplicas: 3
   metrics:
     - type: Resource
       resource:
