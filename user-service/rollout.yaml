@@ -26,11 +26,11 @@ spec:
               protocol: TCP
           resources:
             requests:
-              memory: "300Mi"
-              cpu: "200m"
+              memory: "400Mi"
+              cpu: "500m"
             limits:
               memory: "512Mi"
-              cpu: "500m"
+              cpu: "800m"
           volumeMounts:
             - mountPath: /app/src/main/resources/application.properties
               name: shopnow-user-service-application-properties-config-volume
